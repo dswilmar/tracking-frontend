@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { EventProps } from '../../types/event';
-import { format, parseISO } from 'date-fns';
-import styles from './trackingPage.module.css';
+import { Button, Container, Form, Input } from './styles';
+import Card from '../../components/Card';
 
 const TrackingPage = () => {
 
@@ -28,27 +28,18 @@ const TrackingPage = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <Container>
       <h1>Tracking</h1>
-      <form onSubmit={handleSubmitTracking} className={styles.formContainer}>
-        <input type="text" onChange={handleInputTracking} placeholder="Digite o código de rastreamento" />
-        <button>Pesquisar</button>
-      </form>
+      <Form onSubmit={handleSubmitTracking}>
+        <Input type="text" onChange={handleInputTracking} placeholder="Digite o código de rastreamento" />        
+        <Button>Pesquisar</Button>
+      </Form>
+              
       { events.length > 0 && events.map((event: EventProps, index: number) => (
-        <div key={index} className={styles.resultContainer}>
-          <div className={styles.resultCard}>
-            <h2>{format(parseISO(event.eventDate.toString()), 'dd/MM/yyyy HH:mm:ss')}</h2>
-            <p>{event.local}</p>
-            <p>{event.description}</p>            
-          </div>
-        </div>
+        <Card key={index} code={event.code} local={event.local} description={event.description} eventDate={event.eventDate} />
       ))}
-      { events.length === 0 && (
-        <div className={styles.resultError}>
-          <p>Ops! Nenhum resultado encontrado.</p>
-        </div>
-      )}
-    </div>
+      
+    </Container>
   );
 };
 
