@@ -1,9 +1,14 @@
-import './App.css'
+import { ToastContainer } from 'react-toastify';
 import TrackingPage from './pages/TrackingPage';
+import 'react-toastify/dist/ReactToastify.css';
+import './App.css'
 
 function App() {
   return (
-    <TrackingPage />
+    <>
+      <ToastContainer autoClose={5000} theme="dark" position="top-center" />
+      <TrackingPage />      
+    </>
   )
 }
 

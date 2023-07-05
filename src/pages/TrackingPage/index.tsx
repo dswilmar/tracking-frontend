@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { EventProps } from '../../types/event';
+import { toast } from 'react-toastify';
 import { Button, Container, Form, Input } from './styles';
 import Card from '../../components/Card';
 
@@ -21,8 +22,14 @@ const TrackingPage = () => {
         const {code, eventDate, local, description} = item;
         return {code, eventDate, local, description};
       });
-      setEvents(convertedEvents);      
+      if (data.length > 0) {
+        setEvents(convertedEvents);
+      } else {
+        setEvents([]);
+        toast.warn('Ops! Nada encontrado para este código de rastreamento ainda.');
+      }
     } catch (error) {
+      toast.error(`Ops! Ocorreu um erro: ${error}`);
       console.log(`Erro ocorrido na aplicação: ${error}`);
     }
   }
