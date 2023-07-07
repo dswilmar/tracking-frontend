@@ -1,8 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { EventProps } from '../../types/event';
 import { toast } from 'react-toastify';
-import { Button, Container, Form, Input } from './styles';
+import { Button, Container, Form, FormGroup, Input, Logo, ResultsContainer } from './styles';
 import Card from '../../components/Card';
+import logo from '../../images/logo.svg';
 
 const TrackingPage = () => {
 
@@ -36,16 +37,24 @@ const TrackingPage = () => {
 
   return (
     <Container>
-      <h1>Tracking</h1>
       <Form onSubmit={handleSubmitTracking}>
-        <Input type="text" onChange={handleInputTracking} placeholder="Digite o código de rastreamento" />        
-        <Button>Pesquisar</Button>
+        <FormGroup>
+          <h1>Rastreie sua encomenda</h1>
+          <Logo src={logo} />
+        </FormGroup>
+        <FormGroup>
+          <label htmlFor="trackingCode">Digite o código de rastreamento</label>
+          <Input type="text" name="trackingCode" onChange={handleInputTracking} placeholder="Digite o código de rastreamento" />
+        </FormGroup>
+        <FormGroup>
+          <Button>Pesquisar</Button>
+        </FormGroup>
       </Form>
-              
-      { events.length > 0 && events.map((event: EventProps, index: number) => (
-        <Card key={index} code={event.code} local={event.local} description={event.description} eventDate={event.eventDate} />
-      ))}
-      
+      <ResultsContainer>
+        { events.length > 0 && events.map((event: EventProps, index: number) => (
+          <Card key={index} code={event.code} local={event.local} description={event.description} eventDate={event.eventDate} />
+        ))}
+      </ResultsContainer>
     </Container>
   );
 };

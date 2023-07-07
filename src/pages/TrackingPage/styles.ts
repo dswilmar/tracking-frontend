@@ -11,6 +11,7 @@ const Container = styled.div`
 
 const Form = styled.form`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
@@ -36,4 +37,21 @@ const Input = styled.input`
     margin-right: 10px;
 `;
 
-export { Container, Form, Button, Input }
+const Logo = styled.img`
+    width: 120px;
+    height: 120px;
+    padding: 20px;
+`;
+
+const FormGroup = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+`;
+
+const ResultsContainer = styled.div`
+    display: flex;
+`;
+
+export { Container, Form, Button, Input, Logo, FormGroup, ResultsContainer }
