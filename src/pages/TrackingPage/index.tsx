@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { Button, Container, Form, FormGroup, Input, Logo, ResultsContainer } from './styles';
 import Card from '../../components/Card';
 import logo from '../../images/logo.svg';
+import * as Sentry from '@sentry/react';
 
 const TrackingPage = () => {
 
@@ -31,7 +32,7 @@ const TrackingPage = () => {
       }
     } catch (error) {
       toast.error(`Ops! Ocorreu um erro: ${error}`);
-      console.log(`Erro ocorrido na aplicação: ${error}`);
+      Sentry.captureException(`Erro ao efetuar rastreamento: ${error}`);
     }
   }
 
