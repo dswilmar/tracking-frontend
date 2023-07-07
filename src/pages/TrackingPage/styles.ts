@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-    max-width: 600px;
+    max-width: 90%;
     margin: 0 auto;
     background-color: #f2f2f2;
     border-radius: 8px;
     padding: 40px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
 `;
 
 const Form = styled.form`
@@ -51,7 +52,9 @@ const FormGroup = styled.div`
 `;
 
 const ResultsContainer = styled.div`
-    display: flex;
+    display: flex;    
+    align-items: center;
+    justify-content: space-between;
 `;
 
 export { Container, Form, Button, Input, Logo, FormGroup, ResultsContainer }

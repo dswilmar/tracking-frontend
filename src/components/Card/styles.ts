@@ -1,15 +1,9 @@
 import styled from "styled-components";
 
-const Container = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-`;
-
 const ResultCard = styled.div`
     width: 100%;
     max-width: 300px;
+    min-height: 180px;
     background-color: #fff;
     border-radius: 8px;
     margin: 10px;
