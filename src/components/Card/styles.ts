@@ -28,4 +28,4 @@ const ResultCard = styled.div`
     }
 `;
 
-export { Container, ResultCard }
+export { ResultCard }
